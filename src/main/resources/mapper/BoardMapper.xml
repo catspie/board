@@ -6,8 +6,12 @@
 <!--parameterType의 타입을 경로까지 명시해주어야 한다.-->
 <!--mybatis-config의 typeAlias 속성에 풀경로 및 별칭 작성 > 간략하게 표현 가능-->
     <insert id="save" parameterType="board">
-        insert into board(boardWriter, boardPass, boardTitle, boardContents)
-        values(#{boardWriter}, #{boardPass}, #{boardTitle}, #{boardContents})
+        INSERT INTO board(boardWriter, boardPass, boardTitle, boardContents)
+        VALUES(#{boardWriter}, #{boardPass}, #{boardTitle}, #{boardContents})
     </insert>
 
-</mapper>포트 번호 죽이기 taskkill
+    <select id="findAll" resultType="board">
+        SELECT * FROM board ODER BY id DESC
+    </select>
+
+</mapper>

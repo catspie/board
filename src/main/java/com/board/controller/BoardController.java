@@ -5,6 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.board.dto.BoardDTO;
+import org.springframework.ui.Model;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -29,5 +32,13 @@ public class BoardController {
             //폼 전송 실패 시
             return "save";
         }
+    }
+
+    //DB에서 데이터를 가져와야할 때 Model 객체에 담아서 화면으로 가져가 사용
+    @GetMapping("/")
+    public String findAll(Model model){
+        List<BoardDTO> boardDTOList = boardService.findAll();
+        model.addAttribute("boardList", boardDTOList);
+        return "list";
     }
 }
