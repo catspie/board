@@ -5,13 +5,44 @@
 <mapper namespace="Board">
 <!--parameterType의 타입을 경로까지 명시해주어야 한다.-->
 <!--mybatis-config의 typeAlias 속성에 풀경로 및 별칭 작성 > 간략하게 표현 가능-->
-    <insert id="save" parameterType="board">
-        INSERT INTO board(boardWriter, boardPass, boardTitle, boardContents)
-        VALUES(#{boardWriter}, #{boardPass}, #{boardTitle}, #{boardContents})
-    </insert>
+    <insert id="save" parameterType="board"><![CDATA[
+        INSERT
+        INTO
+        board(
+        id,
+        boardWriter,
+        boardPass,
+        boardTitle,
+        boardContents,
+        boardCreatedTime,
+        boardHits,
+        fileAttached
+        )
+        VALUES(
+        board_id_seq.nextval,
+        #{boardWriter},
+        #{boardPass},
+        #{boardTitle},
+        #{boardContents},
+        sysdate,
+        #{boardHits},
+        #{fileAttached}
+        )
+    ]]></insert>
 
     <select id="findAll" resultType="board">
-        SELECT * FROM board ODER BY id DESC
+        SELECT * FROM board ORDER BY id DESC
     </select>
 
+    <select id="findById" parameterType="long" resultType="board">
+        SELECT * FROM board WHERE id = #{id}
+    </select>
+
+    <update id="updateHits" parameterType="long">
+       UPDATE board set boardHits = boardHits + 1 WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM board WHERE id = #{id}
+    </delete>
 </mapper>

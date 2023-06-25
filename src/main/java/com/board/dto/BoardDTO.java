@@ -4,7 +4,7 @@ package com.board.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import java.sql.Timestamp;
+import oracle.sql.TIMESTAMP;
 
 @Getter
 @Setter
@@ -15,7 +15,7 @@ public class BoardDTO {
     private String boardPass;
     private String boardTitle;
     private String boardContents;
+    private TIMESTAMP boardCreatedTime;
     private int boardHits;
-    private Timestamp boardCreateTime;
-
+    private int fileAttached;
 }

@@ -9,6 +9,9 @@
         <input type="text" name="boardPass" placeholder="비밀번호">
         <input type="text" name="boardTitle" placeholder="제목">
         <textarea name="boardContents" cols="30" rows="10" placeholder="내용을 입력하세요"></textarea>
+        <input type="hidden" name="boardCreatedTime">
+        <input type="hidden" name="boardHits">
+        <input type="hidden" name="fileAttached">
         <input type="submit" value="작성">
     </form>
 </body>
