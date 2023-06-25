@@ -21,7 +21,6 @@ spring maven tomcat board project
 # 개발일지
 
 
-# Author
-😳 catspie
+# Author 🥰
 - Website: https://howtomakecode.tistory.com/
 - Github: https://github.com/catspie
