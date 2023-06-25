@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board">
+<!--parameterType의 타입을 경로까지 명시해주어야 한다.-->
+<!--mybatis-config의 typeAlias 속성에 풀경로 및 별칭 작성 > 간략하게 표현 가능-->
+    <insert id="save" parameterType="board">
+        INSERT INTO board(boardWriter, boardPass, boardTitle, boardContents)
+        VALUES(#{boardWriter}, #{boardPass}, #{boardTitle}, #{boardContents})
+    </insert>
+
+    <select id="findAll" resultType="board">
+        SELECT * FROM board ODER BY id DESC
+    </select>
+
+</mapper>
