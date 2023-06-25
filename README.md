@@ -1,5 +1,5 @@
-# board
-Welcome to Board Project 🌱
+# Welcome to Board Project 🌱
+spring maven tomcat board project
 
 # description 
 - 로고
