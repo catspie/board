@@ -51,6 +51,7 @@ public class BoardController {
         boardService.updateHits(id);
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
+        LOGGER.debug("{BoardCreatedTime}: ",boardDTO.getBoardCreatedTime());
         return "detail";
     }
 
