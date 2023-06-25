@@ -45,4 +45,10 @@
     <delete id="delete" parameterType="long">
         DELETE FROM board WHERE id = #{id}
     </delete>
+
+    <update id="update" parameterType="board">
+        UPDATE board set boardTitle = #{boardTitle}, boardContents = #{boardContents}
+        WHERE id = #{id}
+    </update>
+
 </mapper>

@@ -2,6 +2,8 @@ package com.board.controller;
 
 import com.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.board.dto.BoardDTO;
@@ -13,6 +15,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/board")
 public class BoardController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(BoardController.class);
 
     private final BoardService boardService;
 
@@ -61,5 +65,12 @@ public class BoardController {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         return "update";
+    }
+    @PostMapping("/update")
+    public String update(@ModelAttribute BoardDTO boardDTO, Model model){
+        boardService.update(boardDTO);
+        BoardDTO dto = boardService.findById(boardDTO.getId());
+        model.addAttribute("board", dto);
+        return "detail";
     }
 }
